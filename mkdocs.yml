@@ -1,5 +1,118 @@
 site_name: Reoxy's blog
 site_url: https://Reoxy258.github.io
-site_author: /Reoxy258
+site_author: Reoxy258
+site_description: Reoxy的博客
+
+repo_url: https://github.com/Reoxy258/blog
+repo_name: Reoxy258/blog
+edit_uri: edit/main/docs
+
+copyright: Copyright &copy; 2024~2025 Reoxy258 # 左下角的版权声明
+#[UI]
 theme:
-  name: material #主题
+  name: material
+  # logo: assets/logo.png 
+  # favicon: assets/logo.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default # 日间模式
+      # primary: cyan # 主色调
+      # accent: indigo # 链接等可交互元件的高亮色
+      toggle:
+        icon: material/weather-night # 图标
+        name: 切换至夜间模式 # 鼠标悬浮提示
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate # 夜间模式
+      # primary: black 
+      # accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切换至日间模式
+
+
+  features: 
+    - announce.dismiss #呈现可标记为由用户读取的临时公告，可以包含一个用于取消当前公告的按钮
+    - navigation.instant #导航选项卡将立即打开，而不是在悬停时显示
+    - navigation.instant.progress #导航选项卡将立即打开，而不是在悬停时显示，并且在加载时显示进度条
+    - header.autohide  #自动隐藏
+    - navigation.tracking #地址栏中的 URL 将自动更新为在目录中突出显示的活动锚点
+    - navigation.tabs #顶级部分将呈现在上面视口标题下方的菜单层中，但在移动设备上保持原样
+    - navigation.tabs.sticky  #启用粘性选项卡后，导航选项卡将锁定在标题下方，并在向下滚动时始终保持可见
+    # - navigation.sections #启用部分后，顶级部分在边栏中呈现为粗体，但在移动设备上保持原样
+    - navigation.top # 返回顶部的按钮 在上滑时出现
+    - navigation.footer # 在底部显示上一页和下一页
+    - search.suggest # 搜索输入一些字母时推荐补全整个单词
+    - search.highlight # 搜索出的文章关键词加入高亮
+    - search.share #搜索分享按钮
+    # - navigation.expand # 打开Tab时左侧目录全部展开
+    - navigation.indexes #启用节索引页后，可以将文档直接附加到节
+    - content.tabs.link
+    - content.tooltips
+    - content.code.copy
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate 
+    # - toc.integrate #左侧目录
+    - toc.follow  # 目录（TOC）跟随滚动，高亮当前阅读部分
+  language: zh # 一些提示性的文字会变成中文
+  icon:
+    repo: fontawesome/brands/git-alt
+    view: material/eye
+    previous: fontawesome/solid/angle-left
+    next: fontawesome/solid/angle-right
+
+
+plugins:
+  # - glightbox
+  - search:
+      lang:
+        - en
+        - zh
+
+extra:
+  generator: True  #删除页脚显示“使用 MkDocs 材料制造”
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  #  pymdownx.betterem
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.saneheaders  # 优化标题解析，避免冲突
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      # linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: ⚓︎
+      title: 目录
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}} # enable Unicode link
+  - md_in_html
+  - footnotes
+  
+
+nav:
+  - Home: index.md
